@@ -1,0 +1,380 @@
+{
+  "timestamp": "2025-11-03T15:42:56.281427",
+  "entry_points": [
+    {
+      "label": "entry",
+      "bbox": [
+        0,
+        663,
+        185,
+        828
+      ],
+      "confidence": 0.79
+    }
+  ],
+  "spots": [
+    {
+      "id": "spot_1",
+      "state": "free",
+      "bbox": [
+        1464,
+        882,
+        1598,
+        1078
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "spot_2",
+      "state": "free",
+      "bbox": [
+        1232,
+        878,
+        1370,
+        1080
+      ],
+      "confidence": 0.91
+    },
+    {
+      "id": "spot_3",
+      "state": "free",
+      "bbox": [
+        424,
+        131,
+        563,
+        380
+      ],
+      "confidence": 0.91
+    },
+    {
+      "id": "spot_4",
+      "state": "occupied",
+      "bbox": [
+        657,
+        129,
+        794,
+        382
+      ],
+      "confidence": 0.91
+    },
+    {
+      "id": "spot_5",
+      "state": "occupied",
+      "bbox": [
+        1464,
+        361,
+        1603,
+        606
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "spot_6",
+      "state": "occupied",
+      "bbox": [
+        770,
+        126,
+        907,
+        381
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "spot_7",
+      "state": "free",
+      "bbox": [
+        1001,
+        362,
+        1140,
+        602
+      ],
+      "confidence": 0.89
+    },
+    {
+      "id": "spot_8",
+      "state": "occupied",
+      "bbox": [
+        538,
+        129,
+        683,
+        381
+      ],
+      "confidence": 0.89
+    },
+    {
+      "id": "spot_9",
+      "state": "free",
+      "bbox": [
+        656,
+        364,
+        795,
+        600
+      ],
+      "confidence": 0.89
+    },
+    {
+      "id": "spot_10",
+      "state": "free",
+      "bbox": [
+        1234,
+        364,
+        1370,
+        604
+      ],
+      "confidence": 0.89
+    },
+    {
+      "id": "spot_11",
+      "state": "free",
+      "bbox": [
+        425,
+        367,
+        562,
+        603
+      ],
+      "confidence": 0.89
+    },
+    {
+      "id": "spot_12",
+      "state": "occupied",
+      "bbox": [
+        191,
+        364,
+        329,
+        609
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "spot_13",
+      "state": "free",
+      "bbox": [
+        540,
+        365,
+        682,
+        603
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "spot_14",
+      "state": "occupied",
+      "bbox": [
+        540,
+        883,
+        680,
+        1078
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "spot_15",
+      "state": "free",
+      "bbox": [
+        882,
+        364,
+        1028,
+        607
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "spot_16",
+      "state": "free",
+      "bbox": [
+        654,
+        883,
+        794,
+        1078
+      ],
+      "confidence": 0.87
+    },
+    {
+      "id": "spot_17",
+      "state": "free",
+      "bbox": [
+        1115,
+        361,
+        1259,
+        604
+      ],
+      "confidence": 0.87
+    },
+    {
+      "id": "spot_18",
+      "state": "free",
+      "bbox": [
+        306,
+        366,
+        449,
+        603
+      ],
+      "confidence": 0.87
+    },
+    {
+      "id": "spot_19",
+      "state": "free",
+      "bbox": [
+        423,
+        879,
+        562,
+        1078
+      ],
+      "confidence": 0.87
+    },
+    {
+      "id": "spot_20",
+      "state": "free",
+      "bbox": [
+        768,
+        363,
+        910,
+        601
+      ],
+      "confidence": 0.87
+    },
+    {
+      "id": "spot_21",
+      "state": "occupied",
+      "bbox": [
+        190,
+        878,
+        329,
+        1077
+      ],
+      "confidence": 0.87
+    },
+    {
+      "id": "spot_22",
+      "state": "free",
+      "bbox": [
+        306,
+        877,
+        449,
+        1077
+      ],
+      "confidence": 0.87
+    },
+    {
+      "id": "spot_23",
+      "state": "occupied",
+      "bbox": [
+        887,
+        883,
+        1029,
+        1079
+      ],
+      "confidence": 0.87
+    },
+    {
+      "id": "spot_24",
+      "state": "free",
+      "bbox": [
+        305,
+        131,
+        451,
+        381
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "spot_25",
+      "state": "free",
+      "bbox": [
+        1348,
+        363,
+        1490,
+        604
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "spot_26",
+      "state": "occupied",
+      "bbox": [
+        191,
+        131,
+        329,
+        377
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "spot_27",
+      "state": "free",
+      "bbox": [
+        770,
+        878,
+        910,
+        1080
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "spot_28",
+      "state": "free",
+      "bbox": [
+        1573,
+        873,
+        1717,
+        1077
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "spot_29",
+      "state": "free",
+      "bbox": [
+        1116,
+        875,
+        1256,
+        1080
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "spot_30",
+      "state": "free",
+      "bbox": [
+        1349,
+        871,
+        1485,
+        1080
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "spot_31",
+      "state": "free",
+      "bbox": [
+        1001,
+        875,
+        1138,
+        1077
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "spot_32",
+      "state": "occupied",
+      "bbox": [
+        1580,
+        363,
+        1722,
+        605
+      ],
+      "confidence": 0.83
+    },
+    {
+      "id": "spot_33",
+      "state": "occupied",
+      "bbox": [
+        886,
+        123,
+        1718,
+        371
+      ],
+      "confidence": 0.8
+    }
+  ]
+}
