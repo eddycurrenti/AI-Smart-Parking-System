@@ -1,9 +1,4 @@
-# ============================================================
-# detect_parking_auto.py — Persistent Annotator (Final Fixed)
-# ============================================================
-# Keeps current parking states, IDs, and reserved settings
-# Only updates detection coordinates from YOLO results
-# ============================================================
+
 
 import cv2
 import json
@@ -11,18 +6,12 @@ import datetime
 import os
 from ultralytics import YOLO
 
-# ------------------------------------------------------------
-# Configuration
-# ------------------------------------------------------------
 MODEL_PATH = "my_model.pt"
 FRAME_PATH = "static/parking.jpg"
 OUTPUT_IMG_PATH = "output/annotated_output.jpg"
 OUTPUT_JSON_PATH = "output/occupancy.json"
 HANDICAP_SPOT_ID = "spot_1"
 
-# ------------------------------------------------------------
-# Load existing data if available
-# ------------------------------------------------------------
 if os.path.exists(OUTPUT_JSON_PATH):
     with open(OUTPUT_JSON_PATH, "r") as f:
         old_data = json.load(f)
@@ -30,9 +19,6 @@ if os.path.exists(OUTPUT_JSON_PATH):
 else:
     old_data, old_spots = {}, {}
 
-# ------------------------------------------------------------
-# Load model and image
-# ------------------------------------------------------------
 print("Loading YOLO model...")
 model = YOLO(MODEL_PATH)
 frame = cv2.imread(FRAME_PATH)
@@ -44,9 +30,6 @@ labels = model.names
 
 spots_data, entry_points = [], []
 
-# ------------------------------------------------------------
-# Process YOLO results
-# ------------------------------------------------------------
 spot_counter = 0
 for box in results.boxes:
     cls_id = int(box.cls[0])
@@ -62,7 +45,7 @@ for box in results.boxes:
         })
         continue
 
-    # Map YOLO class to state
+    
     if "occupied" in cls_name:
         state = "occupied"
     elif "free" in cls_name:
@@ -73,15 +56,14 @@ for box in results.boxes:
     spot_counter += 1
     spot_id = f"spot_{spot_counter}"
 
-    # Preserve previous state if exists
+   
     if spot_id in old_spots:
         prev_state = old_spots[spot_id]["state"]
-        state = prev_state  # keep manual override
-    # Force spot_1 to always exist and be reserved
+        state = prev_state  
+        
     if spot_id == HANDICAP_SPOT_ID:
         state = old_spots.get(spot_id, {}).get("state", "free")
 
-    # Save merged data
     spots_data.append({
         "id": spot_id,
         "state": state,
@@ -113,9 +95,7 @@ for spot in spots_data:
     text_color = (0, 0, 0) if state == "free" else (255, 255, 255)
     cv2.putText(frame, label, (tx, ty), cv2.FONT_HERSHEY_SIMPLEX, 0.6, text_color, 2)
 
-# ------------------------------------------------------------
-# Add Legend
-# ------------------------------------------------------------
+
 total_free = sum(1 for s in spots_data if s["state"] == "free")
 total_occupied = sum(1 for s in spots_data if s["state"] == "occupied")
 total_reserved = 1
@@ -125,9 +105,7 @@ cv2.putText(frame, f"Free: {total_free}", (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.
 cv2.putText(frame, f"Occupied: {total_occupied}", (20, 70), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 cv2.putText(frame, f"Reserved: {total_reserved}", (200, 70), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 0), 2)
 
-# ------------------------------------------------------------
-# Save Results
-# ------------------------------------------------------------
+
 output_data = {
     "timestamp": datetime.datetime.now().isoformat(),
     "entry_points": entry_points,
@@ -141,9 +119,6 @@ print(f"Annotated image saved to {OUTPUT_IMG_PATH}")
 print(f"occupancy.json merged & saved to {OUTPUT_JSON_PATH}")
 print(f"Total Spots: {len(spots_data)} | Free: {total_free} | Occupied: {total_occupied}")
 
-# ------------------------------------------------------------
-# Optional Preview Window
-# ------------------------------------------------------------
 try:
     cv2.imshow("Updated Parking Map", frame)
     print("🖼️ Press 'q' to close preview window.")
@@ -156,3 +131,4 @@ finally:
     cv2.destroyAllWindows()
 
 print("Done — persistent annotation completed successfully.")
+
