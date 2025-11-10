@@ -1,6 +1,4 @@
-// ============================================================
-// ParkingClient.java — AI Smart Parking Client (Readable Dialogs Edition)
-// ============================================================
+
 
 import com.google.gson.*;
 import javax.imageio.ImageIO;
@@ -27,7 +25,7 @@ public class ParkingClient extends JFrame {
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
 
-        // === Colors ===
+   
         Color darkBg = new Color(30, 34, 40);
         Color panelDark = new Color(40, 44, 52);
         Color lightText = new Color(230, 230, 230);
@@ -37,7 +35,6 @@ public class ParkingClient extends JFrame {
         Color lightBg = new Color(240, 240, 240);
         Color darkText = new Color(30, 30, 30);
 
-        // === Apply global UI tweaks ===
         UIManager.put("Panel.background", panelDark);
         UIManager.put("List.background", darkBg);
         UIManager.put("List.foreground", lightText);
@@ -46,7 +43,6 @@ public class ParkingClient extends JFrame {
         UIManager.put("Button.foreground", lightText);
         UIManager.put("ScrollPane.border", new LineBorder(new Color(70, 80, 90)));
 
-        // === Fix JOptionPane dark theme text colors ===
         UIManager.put("OptionPane.background", darkBg);
         UIManager.put("Panel.background", darkBg);
         UIManager.put("OptionPane.messageForeground", lightText);
@@ -60,7 +56,6 @@ public class ParkingClient extends JFrame {
         UIManager.put("Button.foreground", lightText);
         UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.PLAIN, 13));
 
-        // === TOP BAR ===
         JPanel top = new JPanel(new BorderLayout());
         top.setBorder(new EmptyBorder(10, 15, 10, 15));
         top.setBackground(lightBg);
@@ -78,7 +73,6 @@ public class ParkingClient extends JFrame {
         top.add(banner, BorderLayout.CENTER);
         add(top, BorderLayout.NORTH);
 
-        // === LEFT PANEL ===
         JPanel left = new JPanel(new BorderLayout(10, 10));
         left.setPreferredSize(new Dimension(330, 0));
         left.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -96,7 +90,6 @@ public class ParkingClient extends JFrame {
         scroll.setBorder(new LineBorder(new Color(70, 80, 90)));
         left.add(scroll, BorderLayout.CENTER);
 
-        // === CONTROL BUTTONS ===
         JPanel controls = new JPanel(new GridLayout(4, 1, 8, 8));
         controls.setBackground(panelDark);
 
@@ -116,7 +109,6 @@ public class ParkingClient extends JFrame {
         left.add(controls, BorderLayout.SOUTH);
         add(left, BorderLayout.WEST);
 
-        // === RIGHT PANEL (Image View) ===
         imgLabel = new JLabel("Waiting for camera feed...", SwingConstants.CENTER);
         imgLabel.setForeground(lightText);
         imgLabel.setFont(new Font("Segoe UI", Font.ITALIC, 15));
@@ -124,7 +116,6 @@ public class ParkingClient extends JFrame {
         imgScroll.setBorder(null);
         add(imgScroll, BorderLayout.CENTER);
 
-        // === STATUS BAR ===
         JPanel statusBar = new JPanel(new BorderLayout());
         statusBar.setBackground(Color.BLACK);
         statusLabel = new JLabel("Ready.");
@@ -134,7 +125,6 @@ public class ParkingClient extends JFrame {
         statusBar.add(statusLabel, BorderLayout.WEST);
         add(statusBar, BorderLayout.SOUTH);
 
-        // === Actions ===
         ask.addActionListener(e -> new Thread(() -> showCarTypeDialog()).start());
         occupy.addActionListener(e -> updateSpot(idField.getText().trim(), true));
         free.addActionListener(e -> updateSpot(idField.getText().trim(), false));
@@ -144,7 +134,6 @@ public class ParkingClient extends JFrame {
         loadStatus();
     }
 
-    // === Create Buttons ===
     private JButton createButton(String text, Color color) {
         JButton btn = new JButton(text);
         btn.setFocusPainted(false);
@@ -300,3 +289,4 @@ public class ParkingClient extends JFrame {
 
     public static void main(String[] a){ SwingUtilities.invokeLater(ParkingClient::new); }
 }
+
