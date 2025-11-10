@@ -1,6 +1,4 @@
-# ============================================================
-# app.py — AI Smart Parking Flask Backend (Car-Type Aware)
-# ============================================================
+
 
 from flask import Flask, jsonify, request
 import subprocess, json, base64, os
@@ -8,17 +6,12 @@ from threading import Thread
 
 app = Flask(__name__)
 
-# ------------------------------------------------------------
-# Configuration
-# ------------------------------------------------------------
 YOLO_SCRIPT = "detect_parking_auto.py"
 OUTPUT_JSON = "output/occupancy.json"
 ANNOTATED_IMG = "output/annotated_output.jpg"
 HANDICAP_SPOTS = ["spot_1"]  # Reserved spots
 
-# ------------------------------------------------------------
-# Utility Functions
-# ------------------------------------------------------------
+
 def load_data():
     if not os.path.exists(OUTPUT_JSON):
         return {"error": "No occupancy.json found."}
@@ -47,19 +40,16 @@ def run_yolo_async():
     def _run():
         try:
             subprocess.run(["python", "-u", YOLO_SCRIPT], cwd=os.getcwd(), check=True)
-            print("✅ YOLO re-annotation complete.")
+            print(" YOLO re-annotation complete.")
         except Exception as e:
-            print(f"⚠️ YOLO refresh failed: {e}")
+            print(f" YOLO refresh failed: {e}")
     Thread(target=_run, daemon=True).start()
 
 
-# ------------------------------------------------------------
-# ROUTES
-# ------------------------------------------------------------
 @app.route("/")
 def home():
     return jsonify({
-        "message": "✅ AI Smart Parking Backend Running",
+        "message": " AI Smart Parking Backend Running",
         "routes": ["/status", "/recommend?type=", "/confirm", "/reset"]
     })
 
@@ -100,7 +90,7 @@ def recommend():
         if s["state"].lower() == "free" and s["id"].lower() not in [h.lower() for h in HANDICAP_SPOTS]
     ]
     if not free_spots:
-        return jsonify({"message": "🚫 No free spots available."})
+        return jsonify({"message": " No free spots available."})
 
     # Helper to count neighbouring free spots
     def count_free_neighbors(idx):
@@ -138,7 +128,7 @@ def recommend():
                 selected = s
                 break
         if not selected:
-            return jsonify({"message": "🚫 No premium spots with both neighbours free."})
+            return jsonify({"message": " No premium spots with both neighbours free."})
 
     if not selected:
         selected = ranked[0][0]
@@ -148,7 +138,7 @@ def recommend():
         selected["image"] = img_b64
     selected["car_type"] = car_type
 
-    print(f"💡 Recommended {selected['id']} for {car_type.title()}")
+    print(f" Recommended {selected['id']} for {car_type.title()}")
     return jsonify(selected)
 
 
@@ -165,7 +155,7 @@ def confirm():
             return jsonify({"error": "No parking data found."}), 404
 
         if spot_id in [h.lower() for h in HANDICAP_SPOTS] and confirm_flag:
-            return jsonify({"error": f"⚠️ {spot_id} is reserved for handicapped drivers only."}), 403
+            return jsonify({"error": f" {spot_id} is reserved for handicapped drivers only."}), 403
 
         found = False
         for s in data["spots"]:
@@ -201,5 +191,6 @@ def reset():
 
 
 if __name__ == "__main__":
-    print("🚀 Starting AI Smart Parking Flask Server...")
+    print("Starting AI Smart Parking Flask Server...")
     app.run(host="127.0.0.1", port=5000, debug=True)
+
