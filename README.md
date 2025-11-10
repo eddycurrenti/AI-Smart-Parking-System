@@ -17,18 +17,31 @@ It automatically detects parking occupancy from images or video, recommends the 
 ## 🧩 Project Structure
 AI-Smart-Parking-System/
 │
+
 ├── app.py # Flask backend API
+
 ├── detect_parking_auto.py # YOLO-based parking detection
+
 ├── cleanup.py # Utility to clean output and cache
+
 ├── test_flask.py # Quick test route for Flask
+
 ├── ParkingClient.java # Java client to interact with the Flask API
+
 ├── my_model.pt # Trained YOLO model (not included in GitHub)
+
 ├── json-20240303.jar # JSON library for Java client
+
 ├── static/
+
 │ └── parking.jpg # Sample parking lot image
+
 ├── output/
+
 │ ├── annotated_output.jpg # Annotated image after detection
+
 │ └── occupancy.json # Parking data (free/occupied spots)
+
 └── requirements.txt # Python dependencies
 
 
